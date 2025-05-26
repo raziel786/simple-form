@@ -11,7 +11,7 @@ The initial design shows "next" buttons for each subsection, which I feel is not
 
 I'm going to try and timebox myself to an 1.5 hours on this one, otherwise I could see myself polishing this forever, plus I want it to be representative of what I can do with the time I have.
 
-Not counting in the time is project set up and getting a blank React app running. Rather than bare-metal setup.
+Not counting in the time is project set up and getting a blank React app & Node/Express app running. Rather than bare-metal setup.
 
 ### Areas of concern / improvements
  With completing the given task, there are many doors of concerns and improvements from both a UX perspective and operation perspective, these include (but not limited to):
