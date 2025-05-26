@@ -2,7 +2,8 @@
 
 This repository contains both the **client** (React) and **server** (Node.js) parts of the project in one place.
 
-<img width="691" alt="Screenshot 2025-05-25 at 22 34 48" src="https://github.com/user-attachments/assets/8752c1c7-a56e-4cbf-b117-5238534635ed" />
+<img width="691" alt="Screenshot 2025-05-25 at 22 34 48" src="https://github.com/user-attachments/assets/a3cfcb00-cde2-4389-a0fe-09ca317def9b" />
+
 
 ### Initial thoughts
 Good and enjoyable task - From what I understand it's POST a claim to an endpoint. While its not necessarily mentioned, its good to display and track existing claims submitted.
@@ -55,5 +56,6 @@ yarn start
 ```bash
 yarn run test
 ```
-<img width="251" alt="Screenshot 2025-05-25 at 22 35 09" src="https://github.com/user-attachments/assets/5db4de5a-8756-403f-9052-273ad4436b9e" />
+
+<img width="251" alt="Screenshot 2025-05-25 at 22 35 09" src="https://github.com/user-attachments/assets/f23aa75a-82fb-4aa2-9f05-93d824819f79" />
 
