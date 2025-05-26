@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import path from 'path';
 
 const app = express();
 const port = 3000;
@@ -13,6 +14,8 @@ const port = 3000;
 app.use(cors());
 
 app.use(bodyParser.json());
+
+const logPath = path.join(__dirname, '../claims.log');
 
 
 
