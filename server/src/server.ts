@@ -73,6 +73,44 @@ app.post('/claims', (req, res) => {
   });
 });
 
+app.get('/claims', (req, res) => {
+  const logPath = path.join(__dirname, '../claims.log');
+
+  fs.readFile(logPath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading file:', err);
+      return res.status(500).send({ message: 'Failed to read claims.' });
+    }
+
+    const lines = data.trim().split('\n');
+
+    const parsedClaims = lines.map(line => {
+      // This finds the timestamp inside square brackets at the start, and the rest of the line after the space
+      const match = line.match(/^\[(.*?)\] (.+)$/);
+      if (!match) return null;
+
+      /**
+       * this returns back:
+       * full match / _
+       * and then the captured items from the match which are
+       * time stamp, and the remaining json which is the claim
+       */
+      const [_, timestamp, json] = match;
+      try {
+        const claim = JSON.parse(json);
+        return { timestamp, ...claim };
+      } catch (e) {
+        console.warn('Skipping malformed line:', line);
+        return null;
+      }
+    }).filter(Boolean);
+
+    res.status(200).send(parsedClaims);
+  });
+});
+
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
