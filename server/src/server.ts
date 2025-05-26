@@ -78,6 +78,11 @@ app.get('/claims', (req, res) => {
 
   fs.readFile(logPath, 'utf8', (err, data) => {
     if (err) {
+      // If file doesn't exist, return an empty array instead of erroring
+      if (err.code === 'ENOENT') {
+        return res.status(200).send([]);
+      }
+
       console.error('Error reading file:', err);
       return res.status(500).send({ message: 'Failed to read claims.' });
     }
@@ -108,8 +113,6 @@ app.get('/claims', (req, res) => {
     res.status(200).send(parsedClaims);
   });
 });
-
-
 
 
 app.listen(port, () => {
