@@ -5,7 +5,7 @@ This repository contains both the **client** (React) and **server** (Node.js) pa
 <img width="691" alt="Screenshot 2025-05-25 at 22 34 48" src="https://github.com/user-attachments/assets/8752c1c7-a56e-4cbf-b117-5238534635ed" />
 
 ### Initial thoughts
-Good task, nothing in there causing me any immediate concerns. From what I understand it's POST a claim to an endpoint. While its not necessarily mentioned, its good to display and track existing claims submitted.
+Good and enjoyable task - From what I understand it's POST a claim to an endpoint. While its not necessarily mentioned, its good to display and track existing claims submitted.
 
 The initial design shows "next" buttons for each subsection, which I feel is not the best approach in this aspect. While not a UX task, In UX design, Fitts law implies that UI should minimise the distance and number of interactions (like clicks) needed for the user to reach their objective, which ultimately minimises user effort, therefore, the submission button will do its initial checks upon fields to determine if they have been populated. If not, it will not POST a claim.
 
