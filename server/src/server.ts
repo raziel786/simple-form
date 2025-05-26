@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import fs from 'fs';
 import path from 'path';
 
 const app = express();
@@ -17,6 +18,60 @@ app.use(bodyParser.json());
 
 const logPath = path.join(__dirname, '../claims.log');
 
+app.post('/claims', (req, res) => {
+  const timestamp = new Date().toISOString();
+
+  // Step 1: Read existing claims first
+  fs.readFile(logPath, 'utf8', (readErr, data) => {
+    let lines = [];
+    let existingClaims = [];
+
+    if (!readErr && data.trim()) {
+      lines = data.trim().split('\n');
+
+      existingClaims = lines.map(line => {
+        const [_, timestamp, json] = line;
+        try {
+          const claim = JSON.parse(json);
+          return { timestamp, ...claim };
+        } catch (e) {
+          console.warn('Skipping malformed line:', line);
+          return null;
+        }
+      }).filter(Boolean);
+    }
+
+    // Step 2: Determine next ID
+    const nextId =
+      existingClaims.length > 0
+        ? Math.max(...existingClaims.map(claim => claim.id || 0)) + 1
+        : 1;
+
+    // Step 3: Create new claim with id and timestamp
+    const newClaim = {
+      ...req.body,
+      id: nextId,
+      timestamp,
+    };
+
+    // Step 4: Write new claim to log
+    const logLine = `[${timestamp}] ${JSON.stringify(newClaim)}\n`;
+
+    fs.appendFile(logPath, logLine, appendErr => {
+      if (appendErr) {
+        console.error('Error writing to file:', appendErr);
+        return res.status(500).send({ message: 'Failed to write claim.' });
+      }
+
+      const updatedClaims = [...existingClaims, newClaim];
+
+      res.status(200).send({
+        message: 'Claim logged successfully.',
+        claims: updatedClaims,
+      });
+    });
+  });
+});
 
 
 app.listen(port, () => {
