@@ -21,7 +21,7 @@ Not counting in the time is project set up and getting a blank React app & Node/
  - Pagination would need to happen as there could be alot of claims that need to be rendered
  - Potentially an evidence section where users can submit images of the 'accident' or 'other incident' that may have happened to further explain the situation.
  - Thinking beyond the box of a react project, if this needed to be mobile too, I would shift this project to expo, so we get the best of both web and mobile.
-
+ - Add tests for remaining files (hooks, API, other components, and backend too).
 ## Setup Instructions
 
 ### Installation
