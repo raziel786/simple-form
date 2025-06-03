@@ -30,7 +30,9 @@ app.post('/claims', (req, res) => {
       lines = data.trim().split('\n');
 
       existingClaims = lines.map(line => {
-        const [_, timestamp, json] = line;
+        const match = line.match(/^\[(.*?)\] (.+)$/);
+        if (!match) return null;
+        const [_, timestamp, json] = match;
         try {
           const claim = JSON.parse(json);
           return { timestamp, ...claim };
