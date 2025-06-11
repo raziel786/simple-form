@@ -1,4 +1,4 @@
-# uw-test
+# simple-form
 
 This repository contains both the **client** (React) and **server** (Node.js) parts of the project in one place.
 
