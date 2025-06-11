@@ -4,6 +4,20 @@ This repository contains both the **client** (React) and **server** (Node.js) pa
 
 <img width="691" alt="Screenshot 2025-05-25 at 22 34 48" src="https://github.com/user-attachments/assets/a3cfcb00-cde2-4389-a0fe-09ca317def9b" />
 
+### Task Summary
+The task involved building a system to submit claims via a POST request to an endpoint. While the core requirement was to allow submission, it made sense to also display and track existing claims, enhancing usability and completeness.
+
+Additional considerations included:
+
+Form validation before submission to ensure required fields were populated.
+
+UX refinements, such as avoiding excessive navigation ("Next" buttons) and reducing unnecessary interactions, in line with Fitts's Law.
+
+Backend suggestions like using UUIDs for unique claim identifiers.
+
+Forward-thinking ideas like pagination, claim editing/deletion, and potential for an evidence upload section.
+
+Consideration for scalability to mobile platforms, suggesting a move to Expo for cross-platform support.
 
 ### Initial thoughts
 Good and enjoyable task - From what I understand it's POST a claim to an endpoint. While its not necessarily mentioned, its good to display and track existing claims submitted.
